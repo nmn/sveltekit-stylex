@@ -7,3 +7,7 @@ declare namespace App {
 	// interface PageData {}
 	// interface Platform {}
 }
+
+declare global {
+	const $state: <T>(arg: T) => T;
+}

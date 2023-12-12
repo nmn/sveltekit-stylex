@@ -1,10 +1,11 @@
-<script lang="ts">
-	let count = 0;
+<script lang="ts"> 
+	let count = $state(0);
 	const incr = () => count++;
 	const decr = () => count--;
 </script>
 
-<h1 class={stylex(styles.foo)}>Welcome to SvelteKit</h1>
+
+<h1 class={stylex(styles.foo)}>SvelteKit ♥️ StyleX</h1>
 <div>
 	<button on:click={decr}>-</button>
 	{count}
@@ -17,7 +18,10 @@
 
   const styles = stylex.create({
     foo: {
-      color: 'red',
+      color: 'tomato',
+      fontFamily: 'system-ui, sans-serif',
+      fontWeight: 200,
+      fontSize: '4rem',
     },
   });
 </script>
