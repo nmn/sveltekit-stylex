@@ -142,10 +142,6 @@ export default function styleXVitePlugin({
 				return;
 			}
 
-			if (id.endsWith('.svelte')) {
-				console.log('TRANSFORM', id, inputCode);
-			}
-
 			const isJSLikeFile =
 				id.endsWith('.js') ||
 				id.endsWith('.jsx') ||
@@ -190,10 +186,6 @@ export default function styleXVitePlugin({
 			if (isCompileMode && metadata?.stylex != null && metadata?.stylex.length > 0) {
 				stylexRules[id] = metadata.stylex;
 				reloadStyleX();
-			}
-
-			if (id.endsWith('.svelte')) {
-				console.log('TRANSFORMED', id, code);
 			}
 
 			return { code: code ?? undefined, map, meta: metadata };
