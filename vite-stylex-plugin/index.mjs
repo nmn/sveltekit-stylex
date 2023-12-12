@@ -1,8 +1,5 @@
 import babel from '@babel/core';
 import stylexBabelPlugin from '@stylexjs/babel-plugin';
-import flowSyntaxPlugin from '@babel/plugin-syntax-flow';
-import jsxSyntaxPlugin from '@babel/plugin-syntax-jsx';
-import typescriptSyntaxPlugin from '@babel/plugin-syntax-typescript';
 import path from 'path';
 import crypto from 'crypto';
 
@@ -159,7 +156,6 @@ export default function styleXVitePlugin({
 				babelrc: false,
 				filename: id + '.ts',
 				plugins: [
-					typescriptSyntaxPlugin,
 					[
 						stylexBabelPlugin,
 						{
