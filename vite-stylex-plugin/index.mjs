@@ -100,7 +100,7 @@ export default function styleXVitePlugin({
 		},
 
 		resolveId(id) {
-			if (id === VIRTUAL_STYLEX_MODULE_ID) {
+			if (id === VIRTUAL_STYLEX_MODULE_ID || id.includes(VIRTUAL_STYLEX_MODULE_ID)) {
 				return RESOLVED_STYLEX_MODULE_ID;
 			}
 		},
@@ -120,12 +120,23 @@ export default function styleXVitePlugin({
 			return false;
 		},
 
-		generateBundle() {
+		generateBundle(_options, bundle, isWrite) {
 			const stylexCSS = compileStyleX();
 
 			const hash = crypto.createHash('sha1').update(stylexCSS).digest('hex').slice(0, 8);
 
 			outputFileName = path.join(assetsDir, `stylex.${hash}.css`);
+
+			const existingCSSFileName = Object.keys(bundle).find((fileName) => fileName.endsWith('.css'));
+			if (existingCSSFileName) {
+				const existingCSSFile = bundle[existingCSSFileName];
+
+				// HACK: This assumes there is only StyleX being used for CSS
+				existingCSSFile.source = stylexCSS;
+
+				// Otherwise, this would work too:
+				// existingCSSFile.source += '\n\n' + stylexCSS;
+			}
 
 			this.emitFile({
 				fileName: outputFileName,
