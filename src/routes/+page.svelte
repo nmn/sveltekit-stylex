@@ -4,7 +4,8 @@
 	const decr = () => count--;
 </script>
 
-<h1 class={stylex(styles.foo)}>Welcome to SvelteKit</h1>
+
+<h1 {...attrs(stylex.props(styles.foo))}>SvelteKit ♥️ StyleX</h1>
 <div>
 	<button on:click={decr}>-</button>
 	{count}
@@ -13,11 +14,16 @@
 <p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
 
 <script context="module" lang="ts">
-	import stylex from '@stylexjs/stylex';
+	import * as stylex from '@stylexjs/stylex';
+  import {globalTokens} from '../styles/globalTokens.stylex';
+  import {attrs} from '../styles/utils';
 
   const styles = stylex.create({
     foo: {
-      color: 'red',
+      color: globalTokens.red,
+      fontFamily: 'system-ui, sans-serif',
+      fontWeight: 200,
+      fontSize: '4rem',
     },
   });
 </script>

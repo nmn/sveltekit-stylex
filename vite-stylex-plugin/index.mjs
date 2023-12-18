@@ -154,7 +154,7 @@ export default function styleXVitePlugin({
 
 			const result = await babel.transformAsync(inputCode, {
 				babelrc: false,
-				filename: id + '.ts',
+				filename: id.endsWith('.svelte') ? id + '.ts' : id,
 				plugins: [
 					[
 						stylexBabelPlugin,
