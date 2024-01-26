@@ -173,7 +173,7 @@ export default function styleXVitePlugin({
 							dev: !isProd,
 							unstable_moduleResolution,
 							importSources: stylexImports,
-							runtimeInjection: !isCompileMode,
+							runtimeInjection: !isProd,
 							...options
 						}
 					]
@@ -185,6 +185,8 @@ export default function styleXVitePlugin({
 			}
 
 			let { code, map, metadata } = result;
+
+			// console.log('TRANSFORM', id, code);
 
 			if (isProd) {
 				code = 'import "virtual:stylex.css";\n' + code;

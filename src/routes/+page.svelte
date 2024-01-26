@@ -5,7 +5,7 @@
 </script>
 
 
-<h1 {...attrs(stylex.props(styles.foo))}>SvelteKit ♥️ StyleX</h1>
+<h1 {...stylex.attrs(styles.foo)}>SvelteKit ♥️ StyleX</h1>
 <div>
 	<button on:click={decr}>-</button>
 	{count}
