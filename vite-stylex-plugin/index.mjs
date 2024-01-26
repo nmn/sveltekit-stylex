@@ -120,7 +120,7 @@ export default function styleXVitePlugin({
 			return false;
 		},
 
-		generateBundle(_options, bundle, isWrite) {
+		generateBundle(_options, bundle /*, isWrite*/) {
 			const stylexCSS = compileStyleX();
 
 			const hash = crypto.createHash('sha1').update(stylexCSS).digest('hex').slice(0, 8);
